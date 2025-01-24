@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title><%= title %></title>
+</head>
+<body>
+<%if(created){%>
+<div>
+    Note succefull created
+</div>
+<%}%>
+    <form action="/" method="post">
+        <div class="form-group">
+            <input type="text" class="form-control" name="title"/>
+            <button type="submit">Отправить</button>
+        </div>
+    </form>
+   <%if(notes.length) {%>
+    <div>
+        <ul>
+            <%for(let i =0; i<notes.length; i++) {%>
+            <li>
+                <span id="note-titles"><%=notes[i].title%></span>
+                <button data-type="edit" data-id="<%=notes[i].id%>">Редактировать</button>
+                <button data-type="remove" data-id="<%=notes[i].id%>">Удалить</button>
+            </li>
+            
+            <%}%>
+        </ul>
+    </div>
+<%} else {%>
+<p>ЗАметки не найдены</p>
+<%}%>
+<script src="./app.js"></script>
+</body>
+</html>
